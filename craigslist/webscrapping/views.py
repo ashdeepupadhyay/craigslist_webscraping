@@ -5,4 +5,9 @@ def home(request):
     return render(request,'base.html')
 
 def new_search(request):
-    return render(request,'webscrapping/newsearch.html')
+    search=request.POST.get('search')
+    print(search)
+    stuff_for_frontend={
+        'search':search
+    }
+    return render(request,'webscrapping/newsearch.html',stuff_for_frontend)

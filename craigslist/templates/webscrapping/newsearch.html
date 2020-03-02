@@ -2,12 +2,5 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form action="{% url 'new_search' %}" method="POST">
-    {% csrf_token %}
-    <input type="text" name="search" placeholder="search">
-    <!--<input type="submit" name="submit">-->
-    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-        <i class="material-icons right">send</i>
-      </button>
-</form>
+<h2 style="text-align : center" >{{search | title}}</h2>
 {% endblock %}
