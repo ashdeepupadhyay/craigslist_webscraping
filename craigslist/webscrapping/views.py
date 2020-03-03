@@ -19,7 +19,22 @@ def new_search(request):
     #response=requests.get('https://delhi.craigslist.org/search/bbb?query=python&sort=rel')
     response = requests.get(final_url)
     data=response.text
-    print(data)
+    soup = BeautifulSoup(data,features='html.parser')
+    post_listings=soup.find_all('li',{'class':'result-row'})
+    print(len(post_listings))
+    post_title=post_listings[0].find(class_='result-title').text
+    post_url=post_listings[0].find('a').get('href')
+    post_price=post_listings[0].find(class_='result-price').text
+
+    print(post_title)
+    print(post_url)
+    print(post_price)
+
+    #post_titles=soup.find_all('a',{'class':'result-title'})
+    #print(post_titles[0].text)
+    #print(post_titles[0].get('href'))
+
+    #print(data)
     #print(search)
     stuff_for_frontend={
         'search':search
