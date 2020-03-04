@@ -1,57 +1,22 @@
-
 {% extends 'base.html' %}
 
 {% block content %}
 <h2 style="text-align : center" >{{search | title}}</h2>
-{% for post in final_postings%}
-    <p><title></title> {{post.0}}</p>
-    <p>url {{post.1}}</p>
-    <p>price {{post.2}} </p>
-{% endfor%}
 <div class="row">
+{% for post in final_postings%}
     <div class="col s4">
         <div class="card">
             <div class="card-image">
-                <a href="/"><img src="http://cdn.akc.org/content/hero/puppy-boundaries_header.jpg" alt=""></a>
+                <a href="{{post.1}}"><img src="http://cdn.akc.org/content/hero/puppy-boundaries_header.jpg" alt=""></a>
             </div>
             <div class="card-content">
-                <p>TEST</p>
+                <p>{{post.0}}</p>
             </div>
             <div class="card-action">
-                <a href="/">View listing: Price TEST PRICE</a>
+                <a href="{{post.1}}">View listing: Price {{post.2}}</a>
             </div>
         </div>
     </div>
-
-    <div class="col s4">
-        <div class="card">
-            <div class="card-image">
-                <a href="/"><img src="http://cdn.akc.org/content/hero/puppy-boundaries_header.jpg" alt=""></a>
-            </div>
-            <div class="card-content">
-                <p>TEST</p>
-            </div>
-            <div class="card-action">
-                <a href="/">View listing: Price TEST PRICE</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col s4">
-        <div class="card">
-            <div class="card-image">
-                <a href="/"><img src="http://cdn.akc.org/content/hero/puppy-boundaries_header.jpg" alt=""></a>
-            </div>
-            <div class="card-content">
-                <p>TEST</p>
-            </div>
-            <div class="card-action">
-                <a href="/">View listing: Price TEST PRICE</a>
-            </div>
-        </div>
-    </div>
+{% endfor%}
 </div>
-
-
-
 {% endblock %}
