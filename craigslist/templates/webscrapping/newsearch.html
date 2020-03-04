@@ -3,6 +3,11 @@
 
 {% block content %}
 <h2 style="text-align : center" >{{search | title}}</h2>
+{% for post in final_postings%}
+    <p><title></title> {{post.0}}</p>
+    <p>url {{post.1}}</p>
+    <p>price {{post.2}} </p>
+{% endfor%}
 <div class="row">
     <div class="col s4">
         <div class="card">
