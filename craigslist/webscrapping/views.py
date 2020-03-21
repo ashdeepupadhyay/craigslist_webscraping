@@ -7,6 +7,8 @@ from . import models
 
 # Create your views here.
 BASE_CRAIGS_LIST_URL="https://delhi.craigslist.org/search/?query={}"
+BASE_IMAGE_URL='https://images.craigslist.org/{}_300x300.jpg'
+
 def home(request):
     return render(request,'base.html')
 
@@ -33,7 +35,17 @@ def new_search(request):
             post_price=post.find(class_='result-price').text
         else:
             post_price='N/A'
-        final_postings.append((post_title,post_url,post_price))
+
+        print(post_title)
+        if post.find('a').get('data-ids'):
+            #print(post.find('a').get('data-ids').split(',')[0].split(':')[1])
+            post_image_id=post.find('a').get('data-ids').split(',')[0].split(':')[1]
+            post_image_url=BASE_IMAGE_URL.format(post_image_id)
+            #print(post_image_url)
+        else:
+            post_image_url='https://craigslist.org/images/peace.jpg'
+       
+        final_postings.append((post_title,post_url,post_price,post_image_url))
 
     #print(post_title)
     #print(post_url)
@@ -45,6 +57,7 @@ def new_search(request):
 
     #print(data)
     #print(search)
+
     stuff_for_frontend={
         'search':search,
         'final_postings':final_postings,
